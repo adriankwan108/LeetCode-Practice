@@ -1,37 +1,32 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> answer;
-        bool end = false;
-        int secondTarget;
         
-        for(vector<int>::iterator it = nums.begin(); it!=nums.end(); it++){
-            secondTarget = target - (*it);
+        map<int, int> seen;
+        
+        //loop through container by index
+        for(int i = 0; i < nums.size(); ++i) {
+            int x = target - nums[i]; //complement
+
+            if(seen.find(x) != seen.end())
+                return {seen[x], i};
             
-            if(end == false){
-                for(vector<int>::iterator itTwo = it+1; itTwo!=nums.end(); itTwo++){
-                    if((*itTwo)==secondTarget){
-                        answer.push_back(it-nums.begin());
-                        answer.push_back(itTwo-nums.begin());
-                        end = true;
-                        break;
-                    }
-                }    
-            }else{
-                break;
-            }
+            //if cannot find, add to the map
+            seen[nums[i]] = i;
         }
-        return answer;
+        
+        return {};
     }
 };
 
 /*
-Runtime: 1972 ms, faster than 5.01% of C++ online submissions for Two Sum.
-Memory Usage: 9.3 MB, less than 48.65% of C++ online submissions for Two Sum.
+Runtime: 12 ms, faster than 93.13% of C++ online submissions for Two Sum.
+Memory Usage: 9.9 MB, less than 47.25% of C++ online submissions for Two Sum.
 */
