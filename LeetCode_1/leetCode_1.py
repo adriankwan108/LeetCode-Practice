@@ -15,6 +15,5 @@ if __name__ == '__main__':
 '''
 
 '''
-Runtime: 48 ms, faster than 80.93% of Python3 online submissions for Two Sum.
-Memory Usage: 15.4 MB, less than 19.99% of Python3 online submissions for Two Sum.
+48~91ms, 15.4 MB
 '''
